@@ -1,0 +1,8 @@
+[package]
+name = "localnet_launcher"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+local-net = { path = "../zcash_local_net", package = "zcash_local_net" }
+tokio = { workspace = true, features = ["signal"] }
