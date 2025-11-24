@@ -1,15 +1,11 @@
 use std::sync::{Arc, Mutex};
 
-use local_net::{
-    LocalNet, indexer::lightwalletd::Lightwalletd, process::Process, validator::zcashd::Zcashd,
-};
+use local_net::{LocalNet, indexer::zainod::Zainod, process::Process, validator::zebrad::Zebrad};
 use tokio::signal::ctrl_c;
 
 #[tokio::main]
 async fn main() {
-    let network = LocalNet::<Zcashd, Lightwalletd>::launch_default()
-        .await
-        .unwrap();
+    let network = LocalNet::<Zebrad, Zainod>::launch_default().await.unwrap();
 
     println!("Indexer running at: 127.0.0.1:{}", network.indexer().port());
 
